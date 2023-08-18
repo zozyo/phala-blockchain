@@ -544,7 +544,7 @@ impl DataSourceManager {
             .max_request_body_size(u32::MAX)
             .build(uri)
             .await?;
-        let ws_client = ClientBuilder::default().build_with_tokio(sender, receiver);
+        let ws_client = ClientBuilder::default().max_concurrent_requests(65535).build_with_tokio(sender, receiver);
         let ws_client = Arc::new(ws_client);
 
         let client = RpcClient::from_rpc_client(ws_client.clone())
