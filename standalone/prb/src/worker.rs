@@ -733,7 +733,7 @@ impl WorkerContext {
                     fetch_storage_bytes(&api, &registry_query).await?;
                 if let Some(registry_info) = registry_info {
                     if let Some(score) = registry_info.initial_score {
-                        if score > 0 {
+                        if score > 2300 {
                             set_worker_message!(c, "Got valid benchmark score!");
                             break;
                         }
